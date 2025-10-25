@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة توظيف - Tawzif Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <i class="fas fa-briefcase"></i>
+                    <h1>منصة توظيف</h1>
+                </div>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active">الرئيسية</a>
+                    <a href="#employers" class="nav-link">أصحاب العمل</a>
+                    <a href="#job-seekers" class="nav-link">باحثون عن عمل</a>
+                    <a href="#advertisements" class="nav-link">الإعلانات</a>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">منصة عربية متكاملة للوظائف والإعلانات</h1>
+                    <p class="hero-description">
+                        منصة توظيف تجمع بين الباحثين عن عمل، أصحاب الوظائف، ومقدمي الخدمات في مكان واحد. 
+                        انضم إلى آلاف المستخدمين واكتشف فرصًا لا حصر لها.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">5,000+</span>
+                            <span class="stat-label">وظيفة متاحة</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">3,000+</span>
+                            <span class="stat-label">باحث عن عمل</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1,500+</span>
+                            <span class="stat-label">إعلان نشط</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="platform-cards">
+                        <div class="platform-card" data-target="employers">
+                            <div class="card-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h3>أصحاب العمل</h3>
+                            <p>انشر الوظائف وابحث عن المواهب المناسبة</p>
+                            <div class="card-badge">50+ شركة</div>
+                        </div>
+                        <div class="platform-card" data-target="job-seekers">
+                            <div class="card-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>الباحثون عن عمل</h3>
+                            <p>ابحث عن الوظائف المثالية وانمي مسارك المهني</p>
+                            <div class="card-badge">3,000+ باحث</div>
+                        </div>
+                        <div class="platform-card" data-target="advertisements">
+                            <div class="card-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h3>مقدمو الخدمات</h3>
+                            <p>اعرض خدماتك ووسع نطاق عملك</p>
+                            <div class="card-badge">1,500+ خدمة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Sections -->
+    <main class="main-content">
+        <!-- Employers Section -->
+        <section id="employers" class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">الوظائف المتاحة</h2>
+                    <p class="section-subtitle">تصفح أحدث الوظائف من أفضل الشركات</p>
+                </div>
+                
+                <div class="filters-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="jobSearch" placeholder="ابحث عن وظيفة، شركة، أو مجال...">
+                    </div>
+                    <div class="filters">
+                        <select class="filter-select" id="jobLocation">
+                            <option value="">جميع المدن</option>
+                            <option value="riyadh">الرياض</option>
+                            <option value="jeddah">جدة</option>
+                            <option value="dammam">الدمام</option>
+                        </select>
+                        <select class="filter-select" id="jobType">
+                            <option value="">نوع الدوام</option>
+                            <option value="full">دوام كامل</option>
+                            <option value="part">دوام جزئي</option>
+                            <option value="remote">عمل عن بعد</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section-info">
+                    <div class="results-count">
+                        عرض <span id="jobsCount">0</span> وظيفة
+                    </div>
+                    <div class="sort-options">
+                        <select class="sort-select" id="jobsSort">
+                            <option value="newest">الأحدث أولاً</option>
+                            <option value="oldest">الأقدم أولاً</option>
+                            <option value="salary_high">الأعلى راتباً</option>
+                            <option value="salary_low">الأقل راتباً</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="jobs-grid" id="jobsGrid">
+                    <!-- Jobs will be loaded here by JavaScript -->
+                </div>
+
+                <!-- Pagination for Jobs -->
+                <div class="pagination" id="jobsPagination">
+                    <!-- Pagination will be generated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Seekers Section -->
+        <section id="job-seekers" class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">الباحثون عن عمل</h2>
+                    <p class="section-subtitle">تعرف على المواهب والكفاءات المتاحة</p>
+                </div>
+                
+                <div class="filters-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="candidateSearch" placeholder="ابحث عن باحث، تخصص، أو مهارة...">
+                    </div>
+                    <div class="filters">
+                        <select class="filter-select" id="candidateLocation">
+                            <option value="">جميع المدن</option>
+                            <option value="riyadh">الرياض</option>
+                            <option value="jeddah">جدة</option>
+                            <option value="dammam">الدمام</option>
+                        </select>
+                        <select class="filter-select" id="candidateSpecialty">
+                            <option value="">جميع التخصصات</option>
+                            <option value="tech">التقنية</option>
+                            <option value="finance">المالية</option>
+                            <option value="marketing">التسويق</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section-info">
+                    <div class="results-count">
+                        عرض <span id="candidatesCount">0</span> باحث عن عمل
+                    </div>
+                    <div class="sort-options">
+                        <select class="sort-select" id="candidatesSort">
+                            <option value="newest">الأحدث أولاً</option>
+                            <option value="oldest">الأقدم أولاً</option>
+                            <option value="experience_high">الأكثر خبرة</option>
+                            <option value="experience_low">الأقل خبرة</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="candidates-grid" id="candidatesGrid">
+                    <!-- Candidates will be loaded here by JavaScript -->
+                </div>
+
+                <!-- Pagination for Candidates -->
+                <div class="pagination" id="candidatesPagination">
+                    <!-- Pagination will be generated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Advertisements Section -->
+        <section id="advertisements" class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">الإعلانات والخدمات</h2>
+                    <p class="section-subtitle">اكتشف خدمات التدريب والاستشارات المتاحة</p>
+                </div>
+                
+                <div class="filters-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="adSearch" placeholder="ابحث عن خدمة، تدريب، أو إعلان...">
+                    </div>
+                    <div class="filters">
+                        <select class="filter-select" id="adCategory">
+                            <option value="">جميع الفئات</option>
+                            <option value="training">التدريب</option>
+                            <option value="consulting">الاستشارات</option>
+                            <option value="freelance">العمل الحر</option>
+                        </select>
+                        <select class="filter-select" id="adLocation">
+                            <option value="">جميع المدن</option>
+                            <option value="riyadh">الرياض</option>
+                            <option value="jeddah">جدة</option>
+                            <option value="dammam">الدمام</option>
+                            <option value="remote">عن بعد</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section-info">
+                    <div class="results-count">
+                        عرض <span id="adsCount">0</span> إعلان
+                    </div>
+                    <div class="sort-options">
+                        <select class="sort-select" id="adsSort">
+                            <option value="newest">الأحدث أولاً</option>
+                            <option value="oldest">الأقدم أولاً</option>
+                            <option value="price_high">الأعلى سعراً</option>
+                            <option value="price_low">الأقل سعراً</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="ads-grid" id="adsGrid">
+                    <!-- Ads will be loaded here by JavaScript -->
+                </div>
+
+                <!-- Pagination for Ads -->
+                <div class="pagination" id="adsPagination">
+                    <!-- Pagination will be generated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>منصة توظيف</h3>
+                    </div>
+                    <p class="footer-description">
+                        منصة عربية رائدة في مجال التوظيف والإعلانات، نقدم حلولاً متكاملة لأصحاب العمل والباحثين عن عمل ومقدمي الخدمات.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#employers">أصحاب العمل</a></li>
+                        <li><a href="#job-seekers">باحثون عن عمل</a></li>
+                        <li><a href="#advertisements">الإعلانات</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">خدماتنا</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">نشر الوظائف</a></li>
+                        <li><a href="#">البحث عن موظفين</a></li>
+                        <li><a href="#">التدريب والتطوير</a></li>
+                        <li><a href="#">الاستشارات</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">معلومات التواصل</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+966 123 456 789</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@tawzif.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>الرياض، المملكة العربية السعودية</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 منصة توظيف. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">تم العملية بنجاح</span>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
